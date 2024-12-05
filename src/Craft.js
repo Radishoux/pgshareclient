@@ -38,7 +38,7 @@ const handleSubmit = async (e) => {
 
     if (response.ok) {
       if (data.id) {
-        const link = `/Play?i=${data.id}&ae=${errorsAllowed}`;
+        const link = `?i=${data.id}&ae=${errorsAllowed}`;
         setUploadLink(link);
         setUploaded(true);
       }
@@ -49,7 +49,8 @@ const handleSubmit = async (e) => {
 };
 
 const copyToClipboard = () => {
-  navigator.clipboard.writeText(uploadLink);
+  // copy to clipboard the actual link + uploadLink
+  navigator.clipboard.writeText((window.location.href + uploadLink));
 };
 
   return (
